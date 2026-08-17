@@ -1,0 +1,36 @@
+Roshan - Frontend Engineering Study Notes
+
+Question 1:
+What do you know about Functions?
+Answer:
+1. A function is a reusable block of code that performs a specific task.
+2. It can take parameters as input and return an output value.
+3. Functions help keep code modular, readable, and maintainable.
+
+Question 2:
+What is layout in web development?
+Answer:
+1. Layout refers to the visual arrangement and positioning of elements on a webpage.
+2. It determines where items like navigation bars, text, cards, buttons, and footers appear.
+3. Modern CSS layouts create responsive, aesthetically pleasing user interfaces across screen sizes.
+
+Question 3:
+What do you know about Flexbox Layout?
+Answer:
+1. Flexbox (Flexible Box Layout) is a one-dimensional CSS layout model.
+2. It distributes space and aligns items along a row or column direction.
+3. It makes alignment, distribution, and responsive ordering simple without manual floats.
+
+Question 4:
+What is the purpose of CSS Grid Layout?
+Answer:
+1. CSS Grid is a two-dimensional layout system dealing with rows and columns simultaneously.
+2. It is ideal for complex layouts, bento grids, and full-page application architectures.
+3. It provides precise control over sizing, placement, and spanning of grid items.
+
+Question 5:
+What is the purpose and use of GitHub?
+Answer:
+1. GitHub is a cloud-based hosting service for Git version control repositories.
+2. It tracks source code changes, revisions, and project history.
+3. It empowers developers to collaborate smoothly using pull requests, branches, and code reviews.

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Roshan">
+    <meta name="Description" content="Roshan Login Portal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan - Secure Portal Login</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+    
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .login-card{
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        max-width: 380px;
+        padding: 2.5rem 2rem;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        color: #f8fafc;
+    }
+
+    .login-card h2{
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: center;
+        color: #ffffff;
+        margin-bottom: 6px;
+    }
+
+    .subtitle{
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+
+    .form-group{
+        margin-bottom: 18px;
+    }
+
+    label{
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #cbd5e1;
+        margin-bottom: 6px;
+    }
+
+    input{
+        width: 100%;
+        height: 44px;
+        padding: 0 14px;
+        font-size: 0.95rem;
+        color: #f8fafc;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid #334155;
+        border-radius: 10px;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus{
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+
+    input::placeholder{
+        color: #64748b;
+    }
+
+    button{
+        width: 100%;
+        height: 46px;
+        margin-top: 10px;
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    button:hover{
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    button:active{
+        transform: scale(0.98);
+    }
+</style>
+</head>
+<body>
+    <section class="login-card">
+        <main>
+            <form action="#" method="get">
+                <h2>Roshan Portal</h2>
+                <p class="subtitle">Enter your credentials to continue</p>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="roshan@example.com"
+                        required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="••••••••"
+                        required/>
+                </div>
+
+                <button type="submit">Sign In to Roshan Account</button>
+            </form>
+        </main>
+    </section>
+</body>
+</html>

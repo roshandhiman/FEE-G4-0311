@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roshan - Split View</title>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #1e293b;
+}
+
+header{
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    color: #ffffff;
+    padding: 20px 35px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+main{
+    flex: 1;
+    display: flex;
+}
+
+.left{
+    flex: 1;
+    background: #f8fafc;
+    border-right: 2px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.right{
+    flex: 1;
+    background: #eef2ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #4338ca;
+}
+
+footer{
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 18px 35px;
+    font-size: 15px;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    Roshan | Dual Layout Interface
+</header>
+
+<main>
+    <div class="left">
+        Roshan Primary Section
+    </div>
+
+    <div class="right">
+        Roshan Secondary Section
+    </div>
+</main>
+
+<footer>
+    Roshan Studio &copy; 2026 Split Layout
+</footer>
+
+</body>
+</html>

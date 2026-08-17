@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Roshan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan - Responsive Grid System</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body{
+            min-height: 100vh;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .header-box{
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .grid-container{
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, 140px);
+            grid-template-rows: repeat(3, 140px);
+            place-content: center;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .grid-item{
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .grid-item:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        @media (min-width: 767px){
+            .grid-container{
+                grid-template-columns: repeat(3, 190px);
+                grid-template-rows: repeat(2, 160px);
+            }
+        }
+
+        @media (min-width: 1024px){
+            .grid-container{
+                grid-template-columns: repeat(4, 220px);
+                grid-template-rows: repeat(2, 170px);
+            }
+
+            #m6{
+                grid-column: 2 / -1;
+            }
+        }
+
+        .footer-box{
+            background: #1e293b;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-box">
+        <span style="font-size: 1.8rem; margin-right: 0.75rem;">&#9812;</span>
+        Roshan Grid Workspace
+    </header>
+
+    <main class="grid-container">
+        <div class="grid-item" id="m1">Roshan 01</div>
+        <div class="grid-item" id="m2">Roshan 02</div>
+        <div class="grid-item" id="m3">Roshan 03</div>
+        <div class="grid-item" id="m4">Roshan 04</div>
+        <div class="grid-item" id="m5">Roshan 05</div>
+        <div class="grid-item" id="m6">Roshan 06 (Wide Span)</div>
+    </main>
+
+    <footer class="footer-box">
+        Roshan &copy; 2026 Grid Layout Architecture
+    </footer>
+</body>
+</html>

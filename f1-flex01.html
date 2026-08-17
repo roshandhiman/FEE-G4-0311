@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roshan - Flex Layout</title>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+header{
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    padding: 20px 40px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+main{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    column-gap: 25px;
+    row-gap: 20px;
+}
+
+.box{
+    width: 220px;
+    height: 170px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.box:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+}
+
+footer{
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 18px 40px;
+    font-size: 15px;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    Roshan | Flex & Grid Workspace
+</header>
+
+<main>
+    <div class="container">
+        <div class="box">Roshan 01</div>
+        <div class="box">Roshan 02</div>
+        <div class="box">Roshan 03</div>
+        <div class="box">Roshan 04</div>
+    </div>
+</main>
+
+<footer>
+    Roshan &copy; 2026 Layout System. All rights reserved.
+</footer>
+
+</body>
+</html>

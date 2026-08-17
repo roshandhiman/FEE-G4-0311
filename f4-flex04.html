@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan - Venn Circles</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .title {
+            color: #f8fafc;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .box {
+            background: #1e293b;
+            width: 90%;
+            max-width: 650px;
+            height: 380px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circles {
+            position: relative;
+            width: 320px;
+            height: 160px;
+        }
+
+        .circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            position: absolute;
+            mix-blend-mode: screen;
+            transition: transform 0.3s ease;
+        }
+
+        .circle1 {
+            left: 0;
+            background: rgba(59, 130, 246, 0.7);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .circle2 {
+            left: 160px;
+            background: rgba(236, 72, 153, 0.7);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+        }
+
+        .circle3 {
+            left: 80px;
+            background: rgba(168, 85, 247, 0.7);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .box:hover .circle {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">Roshan - Venn Geometry Design</div>
+    <div class="box">
+        <div class="circles">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+        </div>
+    </div>
+</body>
+</html>
