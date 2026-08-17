@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan - Frontend Engineering Lab Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg-dark: #090d16;
+            --sidebar-bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --active-bg: rgba(99, 102, 241, 0.15);
+            --active-border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            height: 64px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .brand-text h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .device-selector {
+            display: flex;
+            background: #1e293b;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .device-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .device-btn.active, .device-btn:hover {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .external-btn {
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .external-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .app-layout {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        aside {
+            width: 320px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: width 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge-count {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .file-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .file-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .file-list::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: transparent;
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .file-item.active {
+            background: var(--active-bg);
+            border-color: var(--active-border);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-icon {
+            font-size: 1.1rem;
+        }
+
+        .file-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .file-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .file-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #cbd5e1;
+        }
+
+        .tag-html { color: #f97316; background: rgba(249, 115, 22, 0.15); }
+        .tag-js { color: #eab308; background: rgba(234, 179, 8, 0.15); }
+        .tag-txt { color: #06b6d4; background: rgba(6, 182, 212, 0.15); }
+        .tag-css { color: #3b82f6; background: rgba(59, 130, 246, 0.15); }
+
+        main.preview-container {
+            flex: 1;
+            background: #020617;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 16px;
+            overflow: hidden;
+        }
+
+        .preview-bar {
+            width: 100%;
+            height: 38px;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            max-width: 100%;
+            transition: max-width 0.3s ease;
+        }
+
+        .preview-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .preview-url {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3px 14px;
+            border-radius: 6px;
+        }
+
+        .preview-actions {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .frame-wrapper {
+            width: 100%;
+            height: calc(100% - 38px);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: max-width 0.3s ease;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .code-view {
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 24px;
+            overflow: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 768px) {
+            aside {
+                width: 100%;
+                position: absolute;
+                top: 64px;
+                bottom: 0;
+                left: 0;
+                z-index: 50;
+                transform: translateX(-100%);
+            }
+
+            aside.open {
+                transform: translateX(0);
+            }
+
+            .device-selector {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="brand-logo">R</div>
+            <div class="brand-text">
+                <h1>Roshan • FEE Studio</h1>
+                <p>Interactive Frontend Engineering Lab Preview</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="device-selector">
+                <button class="device-btn active" onclick="setDevice('100%', this)">Desktop</button>
+                <button class="device-btn" onclick="setDevice('768px', this)">Tablet</button>
+                <button class="device-btn" onclick="setDevice('390px', this)">Mobile</button>
+            </div>
+
+            <a id="openTabBtn" href="f1-flex01.html" target="_blank" class="external-btn">
+                Open in New Tab &#8599;
+            </a>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <span>Coursework Files</span>
+                <span class="badge-count">12 Items</span>
+            </div>
+
+            <div class="file-list" id="fileList">
+                <button class="file-item active" onclick="loadFile('f1-flex01.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128203;</span>
+                        <div>
+                            <div class="file-title">f1-flex01.html</div>
+                            <div class="file-sub">Roshan Flex Layout 01</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f2-flex02.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128203;</span>
+                        <div>
+                            <div class="file-title">f2-flex02.html</div>
+                            <div class="file-sub">Split View Interface</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f3-flex03.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128203;</span>
+                        <div>
+                            <div class="file-title">f3-flex03.html</div>
+                            <div class="file-sub">Roshan Card Component</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f4-flex04.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128203;</span>
+                        <div>
+                            <div class="file-title">f4-flex04.html</div>
+                            <div class="file-sub">Venn Geometry Circles</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f5-grid1.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#9638;</span>
+                        <div>
+                            <div class="file-title">f5-grid1.html</div>
+                            <div class="file-sub">Responsive Grid System</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f6-grid2.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#9638;</span>
+                        <div>
+                            <div class="file-title">f6-grid2.html</div>
+                            <div class="file-sub">Bento Grid Architecture</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f7-login.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128272;</span>
+                        <div>
+                            <div class="file-title">f7-login.html</div>
+                            <div class="file-sub">Roshan Portal Login</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f8-staticPage.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128187;</span>
+                        <div>
+                            <div class="file-title">f8-staticPage.html</div>
+                            <div class="file-sub">Responsive Showcase</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f9-inventory.js', 'JS', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#9881;</span>
+                        <div>
+                            <div class="file-title">f9-inventory.js</div>
+                            <div class="file-sub">Inventory Manager Code</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-js">JS</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f10-billing.js', 'JS', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#9881;</span>
+                        <div>
+                            <div class="file-title">f10-billing.js</div>
+                            <div class="file-sub">Supermart Billing Code</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-js">JS</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f11-text1.txt', 'TXT', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128221;</span>
+                        <div>
+                            <div class="file-title">f11-text1.txt</div>
+                            <div class="file-sub">Study Notes & Q&A</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-txt">TXT</span>
+                </button>
+
+                <button class="file-item" onclick="loadFile('f12-navbar.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128441;</span>
+                        <div>
+                            <div class="file-title">f12-navbar.html</div>
+                            <div class="file-sub">Dashboard & Sidebar</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="preview-container">
+            <div class="preview-bar" id="previewBar">
+                <div class="preview-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="preview-url" id="previewUrl">https://roshandhiman.vercel.app/f1-flex01.html</div>
+                <div class="preview-actions">Live Preview</div>
+            </div>
+
+            <div class="frame-wrapper" id="frameWrapper">
+                <iframe id="previewFrame" src="f1-flex01.html"></iframe>
+                <div id="codeViewer" class="code-view" style="display: none;"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function loadFile(file, type, element) {
+            document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            const frame = document.getElementById('previewFrame');
+            const codeViewer = document.getElementById('codeViewer');
+            const previewUrl = document.getElementById('previewUrl');
+            const openTabBtn = document.getElementById('openTabBtn');
+
+            previewUrl.innerText = `https://roshandhiman.vercel.app/${file}`;
+            openTabBtn.href = file;
+
+            if (type === 'HTML') {
+                codeViewer.style.display = 'none';
+                frame.style.display = 'block';
+                frame.src = file;
+            } else {
+                frame.style.display = 'none';
+                codeViewer.style.display = 'block';
+                codeViewer.innerText = 'Loading source file...';
+
+                fetch(file)
+                    .then(res => res.text())
+                    .then(text => {
+                        codeViewer.innerText = text;
+                    })
+                    .catch(err => {
+                        codeViewer.innerText = `Error loading file: ${err.message}`;
+                    });
+            }
+        }
+
+        function setDevice(width, btn) {
+            document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const wrapper = document.getElementById('frameWrapper');
+            const previewBar = document.getElementById('previewBar');
+
+            wrapper.style.maxWidth = width;
+            previewBar.style.maxWidth = width;
+        }
+    </script>
+</body>
+</html>
