@@ -512,6 +512,9 @@
                 <option value="f10-billing.js">f10-billing.js (Supermart Billing Code)</option>
                 <option value="f11-text1.txt">f11-text1.txt (Study Notes & Q&A)</option>
                 <option value="f12-navbar.html">f12-navbar.html (Dashboard & Sidebar)</option>
+                <option value="f13-grade-calc.html">f13-grade-calc.html (Grade & Attendance Interactive)</option>
+                <option value="f13-main.js">f13-main.js (Async Grade CLI Runner)</option>
+                <option value="grade.js">grade.js (ES Module Functions)</option>
             </select>
 
             <div class="view-mode-toggle">
@@ -676,6 +679,39 @@
                     </div>
                     <span class="file-tag tag-html">HTML</span>
                 </button>
+
+                <button class="file-item" data-name="f13-grade-calc.html" onclick="loadFile('f13-grade-calc.html', 'HTML', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#128202;</span>
+                        <div>
+                            <div class="file-title">f13-grade-calc.html</div>
+                            <div class="file-sub">Grade & Attendance GUI</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-html">HTML</span>
+                </button>
+
+                <button class="file-item" data-name="f13-main.js" onclick="loadFile('f13-main.js', 'JS', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#9881;</span>
+                        <div>
+                            <div class="file-title">f13-main.js</div>
+                            <div class="file-sub">Async Grade CLI Runner</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-js">JS</span>
+                </button>
+
+                <button class="file-item" data-name="grade.js" onclick="loadFile('grade.js', 'JS', this)">
+                    <div class="file-info">
+                        <span class="file-icon">&#9881;</span>
+                        <div>
+                            <div class="file-title">grade.js</div>
+                            <div class="file-sub">Grade & Attendance Module</div>
+                        </div>
+                    </div>
+                    <span class="file-tag tag-js">JS</span>
+                </button>
             </div>
         </aside>
 
@@ -801,6 +837,26 @@ let items = [...];</div>
                         <div class="code-preview-snippet">Roshan Study Notes
 Q1: Functions & Scope
 Q2: CSS Layouts & Flexbox</div>
+                    </div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f13-grade-calc.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f13-grade-calc.html (Calculator)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f13-grade-calc.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f13-main.js', 'JS')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f13-main.js (Async Grade CLI)</span>
+                        <span class="file-tag tag-js">JS</span>
+                    </div>
+                    <div class="grid-card-body">
+                        <div class="code-preview-snippet">// f13-main.js
+import { grade, attendance } from "./grade.js";
+const totalDays = await askNumber(...);</div>
                     </div>
                 </div>
             </div>

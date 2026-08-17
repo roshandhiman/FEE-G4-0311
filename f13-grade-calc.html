@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan - Grade & Attendance Calculator (f13)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calc-card {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 440px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            height: 42px;
+            padding: 0 14px;
+            font-size: 0.95rem;
+            color: #f8fafc;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        }
+
+        button {
+            width: 100%;
+            height: 46px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 16px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="calc-card">
+        <h2>Roshan Grade & Attendance</h2>
+        <p class="subtitle">Module: f13-main.js & grade.js logic</p>
+
+        <div class="form-group">
+            <label for="totalDays">Total Days</label>
+            <input type="number" id="totalDays" placeholder="e.g. 100" value="100">
+        </div>
+
+        <div class="form-group">
+            <label for="presentDays">Present Days</label>
+            <input type="number" id="presentDays" placeholder="e.g. 85" value="85">
+        </div>
+
+        <div class="form-group">
+            <label for="marks">Marks Obtained</label>
+            <input type="number" id="marks" placeholder="e.g. 92" value="92">
+        </div>
+
+        <button onclick="calculate()">Compute Grade & Attendance</button>
+
+        <div class="result-box" id="resultBox">
+            <div class="result-title">Computed Result:</div>
+            <div class="result-value" id="resultText"></div>
+        </div>
+    </div>
+
+    <script>
+        function grade(marks) {
+            if (marks >= 90) return 'A';
+            if (marks >= 80) return 'B';
+            if (marks >= 70) return 'C';
+            if (marks >= 60) return 'D';
+            return 'F';
+        }
+
+        function attendance(tDays, pDays) {
+            let x = (pDays / tDays) * 100;
+            return x.toFixed(2);
+        }
+
+        function calculate() {
+            const tDays = Number(document.getElementById('totalDays').value);
+            const pDays = Number(document.getElementById('presentDays').value);
+            const m = Number(document.getElementById('marks').value);
+
+            if (!tDays || !pDays || isNaN(m)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+
+            const att = attendance(tDays, pDays);
+            const g = grade(m);
+            const msg = `Grade is ${g} and attendance is ${att}%`;
+
+            document.getElementById('resultText').innerText = msg;
+            document.getElementById('resultBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
