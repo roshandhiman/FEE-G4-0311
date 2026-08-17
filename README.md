@@ -1,10 +1,3 @@
-# FEE-G4-0311
-
-> **Frontend Engineering (FEE) Lab Assignments & Interactive Showcase**  
-> Developed by **Roshan** (`roshandhiman`)
-
----
-
 ## 🚀 Live Interactive Lab Hub (`main.html` / `index.html`)
 
 This repository contains a **built-in interactive preview portal** (`main.html` / `index.html`) ready for deployment on **Vercel** or any static web host.
