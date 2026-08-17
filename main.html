@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +27,7 @@
         body {
             background-color: var(--bg-page);
             color: var(--text-dark);
+            min-height: 100vh;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -35,54 +35,61 @@
         }
 
         header {
-            height: 60px;
+            min-height: 60px;
             background: var(--bg-white);
             border-bottom: 2px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
-            gap: 12px;
+            padding: 10px 16px;
+            gap: 10px;
             z-index: 10;
+            flex-wrap: wrap;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .brand-badge {
             background: var(--primary);
             color: #ffffff;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
         }
 
         .brand-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--text-dark);
+            white-space: nowrap;
         }
 
         .nav-center {
             display: flex;
             align-items: center;
             gap: 8px;
+            flex: 1;
+            justify-content: center;
+            min-width: 260px;
         }
 
         .select-box {
-            padding: 7px 12px;
+            padding: 6px 10px;
             border: 1px solid var(--border-dark);
             border-radius: 6px;
             background: var(--bg-white);
             color: var(--text-dark);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             outline: none;
             cursor: pointer;
+            max-width: 240px;
+            width: 100%;
         }
 
         .select-box:focus {
@@ -95,13 +102,14 @@
             border-radius: 6px;
             overflow: hidden;
             background: var(--bg-page);
+            flex-shrink: 0;
         }
 
         .tab-btn {
             background: transparent;
             border: none;
-            padding: 7px 14px;
-            font-size: 0.85rem;
+            padding: 6px 10px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-muted);
             cursor: pointer;
@@ -115,23 +123,25 @@
         .header-btns {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            flex-shrink: 0;
         }
 
         .btn {
-            padding: 7px 14px;
+            padding: 6px 10px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             border: 1px solid var(--border-dark);
             background: var(--bg-white);
             color: var(--text-dark);
             transition: all 0.15s ease;
+            white-space: nowrap;
         }
 
         .btn:hover {
@@ -155,21 +165,23 @@
             flex: 1;
             display: flex;
             overflow: hidden;
+            position: relative;
         }
 
         aside {
-            width: 280px;
+            width: 260px;
             background: var(--bg-white);
             border-right: 2px solid var(--border);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .aside-header {
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-bottom: 1px solid var(--border);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -182,22 +194,22 @@
         .file-list {
             flex: 1;
             overflow-y: auto;
-            padding: 8px;
+            padding: 6px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .file-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 9px 12px;
+            padding: 8px 10px;
             border: 1px solid transparent;
             border-radius: 6px;
             background: transparent;
             color: var(--text-dark);
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 500;
             cursor: pointer;
             text-align: left;
@@ -217,9 +229,9 @@
         }
 
         .tag {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            padding: 2px 6px;
+            padding: 2px 5px;
             border-radius: 4px;
             background: #f1f5f9;
             color: #475569;
@@ -233,10 +245,11 @@
         .content-viewer {
             flex: 1;
             background: var(--bg-page);
-            padding: 16px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            min-width: 0;
         }
 
         .action-bar {
@@ -245,16 +258,20 @@
             border-bottom: none;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
-            padding: 10px 16px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 8px;
         }
 
         .current-file-name {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dark);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .viewer-box {
@@ -280,29 +297,63 @@
             height: 100%;
             background: #1e293b;
             color: #f8fafc;
-            padding: 16px;
+            padding: 12px;
             overflow: auto;
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.45;
             white-space: pre-wrap;
+            word-break: break-word;
             display: none;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 820px) {
+            header {
+                height: auto;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            .brand {
+                order: 1;
+            }
+            .header-btns {
+                order: 2;
+            }
+            .nav-center {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                min-width: 100%;
+            }
+            .select-box {
+                max-width: none;
+                flex: 1;
+            }
             aside {
                 display: none;
+            }
+            .content-viewer {
+                padding: 8px;
             }
         }
     </style>
 </head>
-
 <body>
 
     <header>
         <div class="brand">
             <div class="brand-badge">FEE</div>
             <div class="brand-title">Roshanpreet Singh</div>
+        </div>
+
+        <div class="header-btns">
+            <a href="https://github.com/roshandhiman/FEE-G4-0311" target="_blank" class="btn">
+                <svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                GitHub
+            </a>
+            <a id="rawLink" href="f1-flex01.html" target="_blank" class="btn">Open &#8599;</a>
         </div>
 
         <div class="nav-center">
@@ -326,21 +377,9 @@
             </select>
 
             <div class="view-tabs">
-                <button class="tab-btn active" id="tabPreview" onclick="setMode('preview')">Live Preview</button>
-                <button class="tab-btn" id="tabCode" onclick="setMode('code')">View Code</button>
+                <button class="tab-btn active" id="tabPreview" onclick="setMode('preview')">Preview</button>
+                <button class="tab-btn" id="tabCode" onclick="setMode('code')">Code</button>
             </div>
-        </div>
-
-        <div class="header-btns">
-            <a href="https://github.com/roshandhiman/FEE-G4-0311" target="_blank" class="btn">
-                <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
-                    </path>
-                </svg>
-                GitHub Repo
-            </a>
-            <a id="rawLink" href="f1-flex01.html" target="_blank" class="btn">Open New Tab &#8599;</a>
         </div>
     </header>
 
@@ -516,5 +555,4 @@
         loadContent();
     </script>
 </body>
-
 </html>
