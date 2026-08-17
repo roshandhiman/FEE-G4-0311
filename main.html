@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roshan - Frontend Engineering Lab Hub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
         :root {
             --bg-dark: #090d16;
             --sidebar-bg: #0f172a;
             --card-bg: #1e293b;
+            --card-border: #334155;
             --accent: #6366f1;
             --accent-hover: #4f46e5;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #334155;
-            --active-bg: rgba(99, 102, 241, 0.15);
+            --active-bg: rgba(99, 102, 241, 0.18);
             --active-border: #6366f1;
         }
 
@@ -37,39 +38,41 @@
         }
 
         header {
-            height: 64px;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(12px);
+            height: 68px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 24px;
             z-index: 100;
+            gap: 16px;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            min-width: 220px;
         }
 
         .brand-logo {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #6366f1, #a855f7);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
         }
 
         .brand-text h1 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             letter-spacing: -0.3px;
         }
@@ -77,6 +80,60 @@
         .brand-text p {
             font-size: 0.75rem;
             color: var(--text-muted);
+        }
+
+        .top-selector-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            max-width: 600px;
+            justify-content: center;
+        }
+
+        .select-dropdown {
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .select-dropdown option {
+            background: #0f172a;
+            color: #f8fafc;
+        }
+
+        .view-mode-toggle {
+            display: flex;
+            background: #1e293b;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active, .mode-btn:hover {
+            background: var(--accent);
+            color: #ffffff;
         }
 
         .header-actions {
@@ -98,9 +155,9 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -115,7 +172,7 @@
             background: #1e293b;
             color: #f8fafc;
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 8px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -124,6 +181,7 @@
             align-items: center;
             gap: 6px;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .external-btn:hover {
@@ -144,13 +202,32 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            transition: width 0.3s ease;
+        }
+
+        .sidebar-search {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-input {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #f8fafc;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
         }
 
         .sidebar-header {
-            padding: 16px 20px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--border-color);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -171,7 +248,7 @@
         .file-list {
             flex: 1;
             overflow-y: auto;
-            padding: 12px;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -221,7 +298,7 @@
         }
 
         .file-title {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-main);
         }
@@ -233,18 +310,15 @@
         }
 
         .file-tag {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 700;
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-radius: 6px;
-            background: rgba(255, 255, 255, 0.06);
-            color: #cbd5e1;
         }
 
         .tag-html { color: #f97316; background: rgba(249, 115, 22, 0.15); }
         .tag-js { color: #eab308; background: rgba(234, 179, 8, 0.15); }
         .tag-txt { color: #06b6d4; background: rgba(6, 182, 212, 0.15); }
-        .tag-css { color: #3b82f6; background: rgba(59, 130, 246, 0.15); }
 
         main.preview-container {
             flex: 1;
@@ -265,7 +339,7 @@
             border: 1px solid var(--border-color);
             border-bottom: none;
             border-top-left-radius: 12px;
-            border-top-right-right: 12px;
+            border-top-right-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -335,23 +409,80 @@
             white-space: pre-wrap;
         }
 
-        @media (max-width: 768px) {
+        .grid-view-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-card {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 320px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .grid-card-header {
+            padding: 10px 14px;
+            background: #1e293b;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .grid-card-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .grid-card-body {
+            flex: 1;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-card-body iframe {
+            pointer-events: none;
+            transform-origin: 0 0;
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+        }
+
+        .grid-card-body .code-preview-snippet {
+            width: 100%;
+            height: 100%;
+            background: #090d16;
+            color: #94a3b8;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
             aside {
-                width: 100%;
-                position: absolute;
-                top: 64px;
-                bottom: 0;
-                left: 0;
-                z-index: 50;
-                transform: translateX(-100%);
-            }
-
-            aside.open {
-                transform: translateX(0);
-            }
-
-            .device-selector {
                 display: none;
+            }
+            .top-selector-bar {
+                max-width: none;
             }
         }
     </style>
@@ -363,32 +494,58 @@
             <div class="brand-logo">R</div>
             <div class="brand-text">
                 <h1>Roshan • FEE Studio</h1>
-                <p>Interactive Frontend Engineering Lab Preview</p>
+                <p>Interactive Frontend Engineering Lab Hub</p>
+            </div>
+        </div>
+
+        <div class="top-selector-bar">
+            <select class="select-dropdown" id="quickSelect" onchange="onDropdownSelect(this.value)">
+                <option value="f1-flex01.html">f1-flex01.html (Flex Layout 01)</option>
+                <option value="f2-flex02.html">f2-flex02.html (Split View Interface)</option>
+                <option value="f3-flex03.html">f3-flex03.html (Roshan Card Component)</option>
+                <option value="f4-flex04.html">f4-flex04.html (Venn Geometry Circles)</option>
+                <option value="f5-grid1.html">f5-grid1.html (Responsive Grid System)</option>
+                <option value="f6-grid2.html">f6-grid2.html (Bento Grid Architecture)</option>
+                <option value="f7-login.html">f7-login.html (Roshan Portal Login)</option>
+                <option value="f8-staticPage.html">f8-staticPage.html (Responsive Showcase)</option>
+                <option value="f9-inventory.js">f9-inventory.js (Inventory Manager Code)</option>
+                <option value="f10-billing.js">f10-billing.js (Supermart Billing Code)</option>
+                <option value="f11-text1.txt">f11-text1.txt (Study Notes & Q&A)</option>
+                <option value="f12-navbar.html">f12-navbar.html (Dashboard & Sidebar)</option>
+            </select>
+
+            <div class="view-mode-toggle">
+                <button class="mode-btn active" id="singleModeBtn" onclick="switchViewMode('single')">Single View</button>
+                <button class="mode-btn" id="gridModeBtn" onclick="switchViewMode('grid')">All Previews</button>
             </div>
         </div>
 
         <div class="header-actions">
-            <div class="device-selector">
+            <div class="device-selector" id="deviceControls">
                 <button class="device-btn active" onclick="setDevice('100%', this)">Desktop</button>
                 <button class="device-btn" onclick="setDevice('768px', this)">Tablet</button>
                 <button class="device-btn" onclick="setDevice('390px', this)">Mobile</button>
             </div>
 
             <a id="openTabBtn" href="f1-flex01.html" target="_blank" class="external-btn">
-                Open in New Tab &#8599;
+                Open Tab &#8599;
             </a>
         </div>
     </header>
 
     <div class="app-layout">
         <aside id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search files (e.g. f1, grid)..." oninput="filterFiles()">
+            </div>
+
             <div class="sidebar-header">
                 <span>Coursework Files</span>
-                <span class="badge-count">12 Items</span>
+                <span class="badge-count" id="countBadge">12 Items</span>
             </div>
 
             <div class="file-list" id="fileList">
-                <button class="file-item active" onclick="loadFile('f1-flex01.html', 'HTML', this)">
+                <button class="file-item active" data-name="f1-flex01.html" onclick="loadFile('f1-flex01.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128203;</span>
                         <div>
@@ -399,7 +556,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f2-flex02.html', 'HTML', this)">
+                <button class="file-item" data-name="f2-flex02.html" onclick="loadFile('f2-flex02.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128203;</span>
                         <div>
@@ -410,7 +567,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f3-flex03.html', 'HTML', this)">
+                <button class="file-item" data-name="f3-flex03.html" onclick="loadFile('f3-flex03.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128203;</span>
                         <div>
@@ -421,7 +578,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f4-flex04.html', 'HTML', this)">
+                <button class="file-item" data-name="f4-flex04.html" onclick="loadFile('f4-flex04.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128203;</span>
                         <div>
@@ -432,7 +589,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f5-grid1.html', 'HTML', this)">
+                <button class="file-item" data-name="f5-grid1.html" onclick="loadFile('f5-grid1.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#9638;</span>
                         <div>
@@ -443,7 +600,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f6-grid2.html', 'HTML', this)">
+                <button class="file-item" data-name="f6-grid2.html" onclick="loadFile('f6-grid2.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#9638;</span>
                         <div>
@@ -454,7 +611,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f7-login.html', 'HTML', this)">
+                <button class="file-item" data-name="f7-login.html" onclick="loadFile('f7-login.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128272;</span>
                         <div>
@@ -465,7 +622,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f8-staticPage.html', 'HTML', this)">
+                <button class="file-item" data-name="f8-staticPage.html" onclick="loadFile('f8-staticPage.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128187;</span>
                         <div>
@@ -476,7 +633,7 @@
                     <span class="file-tag tag-html">HTML</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f9-inventory.js', 'JS', this)">
+                <button class="file-item" data-name="f9-inventory.js" onclick="loadFile('f9-inventory.js', 'JS', this)">
                     <div class="file-info">
                         <span class="file-icon">&#9881;</span>
                         <div>
@@ -487,7 +644,7 @@
                     <span class="file-tag tag-js">JS</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f10-billing.js', 'JS', this)">
+                <button class="file-item" data-name="f10-billing.js" onclick="loadFile('f10-billing.js', 'JS', this)">
                     <div class="file-info">
                         <span class="file-icon">&#9881;</span>
                         <div>
@@ -498,7 +655,7 @@
                     <span class="file-tag tag-js">JS</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f11-text1.txt', 'TXT', this)">
+                <button class="file-item" data-name="f11-text1.txt" onclick="loadFile('f11-text1.txt', 'TXT', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128221;</span>
                         <div>
@@ -509,7 +666,7 @@
                     <span class="file-tag tag-txt">TXT</span>
                 </button>
 
-                <button class="file-item" onclick="loadFile('f12-navbar.html', 'HTML', this)">
+                <button class="file-item" data-name="f12-navbar.html" onclick="loadFile('f12-navbar.html', 'HTML', this)">
                     <div class="file-info">
                         <span class="file-icon">&#128441;</span>
                         <div>
@@ -529,7 +686,7 @@
                     <span class="dot dot-yellow"></span>
                     <span class="dot dot-green"></span>
                 </div>
-                <div class="preview-url" id="previewUrl">https://roshandhiman.vercel.app/f1-flex01.html</div>
+                <div class="preview-url" id="previewUrl">https://fee-g4-0311.vercel.app/f1-flex01.html</div>
                 <div class="preview-actions">Live Preview</div>
             </div>
 
@@ -537,20 +694,143 @@
                 <iframe id="previewFrame" src="f1-flex01.html"></iframe>
                 <div id="codeViewer" class="code-view" style="display: none;"></div>
             </div>
+
+            <div class="grid-view-container" id="gridView">
+                <div class="grid-card" onclick="selectFromGrid('f1-flex01.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f1-flex01.html (Flexbox)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f1-flex01.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f2-flex02.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f2-flex02.html (Split View)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f2-flex02.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f3-flex03.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f3-flex03.html (Card)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f3-flex03.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f4-flex04.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f4-flex04.html (Venn Circles)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f4-flex04.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f5-grid1.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f5-grid1.html (Grid System)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f5-grid1.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f6-grid2.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f6-grid2.html (Bento Grid)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f6-grid2.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f7-login.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f7-login.html (Portal Login)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f7-login.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f8-staticPage.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f8-staticPage.html (Showcase)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f8-staticPage.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f12-navbar.html', 'HTML')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f12-navbar.html (Dashboard)</span>
+                        <span class="file-tag tag-html">HTML</span>
+                    </div>
+                    <div class="grid-card-body"><iframe src="f12-navbar.html"></iframe></div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f9-inventory.js', 'JS')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f9-inventory.js (JS Logic)</span>
+                        <span class="file-tag tag-js">JS</span>
+                    </div>
+                    <div class="grid-card-body">
+                        <div class="code-preview-snippet">// Roshan Inventory Manager
+let stock = [];
+function addStock() { ... }</div>
+                    </div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f10-billing.js', 'JS')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f10-billing.js (Billing)</span>
+                        <span class="file-tag tag-js">JS</span>
+                    </div>
+                    <div class="grid-card-body">
+                        <div class="code-preview-snippet">// Roshan Supermart Billing
+const store = "ROSHAN MART";
+let items = [...];</div>
+                    </div>
+                </div>
+
+                <div class="grid-card" onclick="selectFromGrid('f11-text1.txt', 'TXT')">
+                    <div class="grid-card-header">
+                        <span class="grid-card-title">f11-text1.txt (Study Notes)</span>
+                        <span class="file-tag tag-txt">TXT</span>
+                    </div>
+                    <div class="grid-card-body">
+                        <div class="code-preview-snippet">Roshan Study Notes
+Q1: Functions & Scope
+Q2: CSS Layouts & Flexbox</div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
     <script>
+        let currentFile = 'f1-flex01.html';
+        let currentType = 'HTML';
+
         function loadFile(file, type, element) {
+            currentFile = file;
+            currentType = type;
+
             document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            } else {
+                const target = document.querySelector(`.file-item[data-name="${file}"]`);
+                if (target) target.classList.add('active');
+            }
+
+            document.getElementById('quickSelect').value = file;
 
             const frame = document.getElementById('previewFrame');
             const codeViewer = document.getElementById('codeViewer');
             const previewUrl = document.getElementById('previewUrl');
             const openTabBtn = document.getElementById('openTabBtn');
 
-            previewUrl.innerText = `https://roshandhiman.vercel.app/${file}`;
+            previewUrl.innerText = `https://fee-g4-0311.vercel.app/${file}`;
             openTabBtn.href = file;
 
             if (type === 'HTML') {
@@ -573,6 +853,43 @@
             }
         }
 
+        function onDropdownSelect(fileName) {
+            let type = 'HTML';
+            if (fileName.endsWith('.js')) type = 'JS';
+            if (fileName.endsWith('.txt')) type = 'TXT';
+            loadFile(fileName, type, null);
+        }
+
+        function switchViewMode(mode) {
+            const singleBtn = document.getElementById('singleModeBtn');
+            const gridBtn = document.getElementById('gridModeBtn');
+            const frameWrapper = document.getElementById('frameWrapper');
+            const previewBar = document.getElementById('previewBar');
+            const gridView = document.getElementById('gridView');
+            const deviceControls = document.getElementById('deviceControls');
+
+            if (mode === 'grid') {
+                singleBtn.classList.remove('active');
+                gridBtn.classList.add('active');
+                frameWrapper.style.display = 'none';
+                previewBar.style.display = 'none';
+                deviceControls.style.display = 'none';
+                gridView.style.display = 'grid';
+            } else {
+                gridBtn.classList.remove('active');
+                singleBtn.classList.add('active');
+                gridView.style.display = 'none';
+                previewBar.style.display = 'flex';
+                frameWrapper.style.display = 'block';
+                deviceControls.style.display = 'flex';
+            }
+        }
+
+        function selectFromGrid(file, type) {
+            switchViewMode('single');
+            loadFile(file, type, null);
+        }
+
         function setDevice(width, btn) {
             document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -582,6 +899,24 @@
 
             wrapper.style.maxWidth = width;
             previewBar.style.maxWidth = width;
+        }
+
+        function filterFiles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.file-item');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.getElementById('countBadge').innerText = `${visibleCount} Items`;
         }
     </script>
 </body>
