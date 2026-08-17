@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshan - Frontend Engineering Lab Hub</title>
+    <title>Roshan • Frontend Engineering Lab</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
         :root {
-            --bg-dark: #090d16;
-            --sidebar-bg: #0f172a;
-            --card-bg: #1e293b;
-            --card-border: #334155;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --active-bg: rgba(99, 102, 241, 0.18);
-            --active-border: #6366f1;
+            --bg-page: #f8fafc;
+            --bg-white: #ffffff;
+            --primary: #f97316;
+            --primary-hover: #ea580c;
+            --primary-light: #fff7ed;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-dark: #cbd5e1;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--bg-page);
+            color: var(--text-dark);
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -38,451 +34,263 @@
         }
 
         header {
-            height: 68px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border-color);
+            height: 60px;
+            background: var(--bg-white);
+            border-bottom: 2px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
-            z-index: 100;
-            gap: 16px;
+            padding: 0 20px;
+            gap: 12px;
+            z-index: 10;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            min-width: 220px;
-        }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-        }
-
-        .brand-text h1 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .brand-text p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .top-selector-bar {
-            display: flex;
-            align-items: center;
             gap: 10px;
-            flex: 1;
-            max-width: 600px;
-            justify-content: center;
         }
 
-        .select-dropdown {
-            background: #1e293b;
-            color: #f8fafc;
-            border: 1px solid var(--border-color);
-            padding: 8px 14px;
-            border-radius: 8px;
+        .brand-badge {
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
             font-size: 0.85rem;
+        }
+
+        .brand-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .select-box {
+            padding: 7px 12px;
+            border: 1px solid var(--border-dark);
+            border-radius: 6px;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            font-size: 0.9rem;
             font-weight: 600;
             outline: none;
             cursor: pointer;
-            width: 100%;
-            max-width: 280px;
         }
 
-        .select-dropdown option {
-            background: #0f172a;
-            color: #f8fafc;
+        .select-box:focus {
+            border-color: var(--primary);
         }
 
-        .view-mode-toggle {
+        .view-tabs {
             display: flex;
-            background: #1e293b;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 3px;
-            gap: 2px;
+            border: 1px solid var(--border-dark);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--bg-page);
         }
 
-        .mode-btn {
+        .tab-btn {
             background: transparent;
             border: none;
-            color: var(--text-muted);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .mode-btn.active, .mode-btn:hover {
-            background: var(--accent);
-            color: #ffffff;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .device-selector {
-            display: flex;
-            background: #1e293b;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 3px;
-            gap: 2px;
-        }
-
-        .device-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .device-btn.active, .device-btn:hover {
-            background: var(--accent);
-            color: #ffffff;
-        }
-
-        .external-btn {
-            background: #1e293b;
-            color: #f8fafc;
-            border: 1px solid var(--border-color);
-            padding: 8px 14px;
-            border-radius: 8px;
+            padding: 7px 14px;
             font-size: 0.85rem;
             font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .header-btns {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            transition: all 0.2s;
-            white-space: nowrap;
+            border: 1px solid var(--border-dark);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            transition: all 0.15s ease;
         }
 
-        .external-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+        .btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
-        .app-layout {
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            color: #ffffff;
+            border-color: var(--primary-hover);
+        }
+
+        .main-content {
             flex: 1;
             display: flex;
             overflow: hidden;
         }
 
         aside {
-            width: 320px;
-            background: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
+            width: 280px;
+            background: var(--bg-white);
+            border-right: 2px solid var(--border);
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        .sidebar-search {
+        .aside-header {
             padding: 12px 16px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .search-input {
-            width: 100%;
-            background: #1e293b;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 8px 12px;
-            color: #f8fafc;
-            font-size: 0.85rem;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent);
-        }
-
-        .sidebar-header {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .badge-count {
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
         }
 
         .file-list {
             flex: 1;
             overflow-y: auto;
-            padding: 10px;
+            padding: 8px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
-        .file-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .file-list::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        .file-item {
+        .file-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 14px;
-            border-radius: 10px;
-            cursor: pointer;
+            padding: 9px 12px;
             border: 1px solid transparent;
+            border-radius: 6px;
             background: transparent;
-            transition: all 0.2s ease;
+            color: var(--text-dark);
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
             text-align: left;
             width: 100%;
         }
 
-        .file-item:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.08);
+        .file-btn:hover {
+            background: var(--primary-light);
+            border-color: var(--border-dark);
         }
 
-        .file-item.active {
-            background: var(--active-bg);
-            border-color: var(--active-border);
+        .file-btn.active {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 700;
         }
 
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .file-icon {
-            font-size: 1.1rem;
-        }
-
-        .file-title {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .file-sub {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .file-tag {
-            font-size: 0.68rem;
+        .tag {
+            font-size: 0.7rem;
             font-weight: 700;
             padding: 2px 6px;
-            border-radius: 6px;
+            border-radius: 4px;
+            background: #f1f5f9;
+            color: #475569;
         }
 
-        .tag-html { color: #f97316; background: rgba(249, 115, 22, 0.15); }
-        .tag-js { color: #eab308; background: rgba(234, 179, 8, 0.15); }
-        .tag-txt { color: #06b6d4; background: rgba(6, 182, 212, 0.15); }
+        .file-btn.active .tag {
+            background: var(--primary);
+            color: #ffffff;
+        }
 
-        main.preview-container {
+        .content-viewer {
             flex: 1;
-            background: #020617;
+            background: var(--bg-page);
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 16px;
             overflow: hidden;
         }
 
-        .preview-bar {
-            width: 100%;
-            height: 38px;
-            background: #0f172a;
-            border: 1px solid var(--border-color);
+        .action-bar {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
             border-bottom: none;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 16px;
-            max-width: 100%;
-            transition: max-width 0.3s ease;
         }
 
-        .preview-dots {
-            display: flex;
-            gap: 6px;
+        .current-file-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-dark);
         }
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .dot-red { background: #ef4444; }
-        .dot-yellow { background: #f59e0b; }
-        .dot-green { background: #10b981; }
-
-        .preview-url {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            background: rgba(0, 0, 0, 0.3);
-            padding: 3px 14px;
-            border-radius: 6px;
-        }
-
-        .preview-actions {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .frame-wrapper {
-            width: 100%;
-            height: calc(100% - 38px);
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
+        .viewer-box {
+            flex: 1;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            transition: max-width 0.3s ease;
+            position: relative;
         }
 
         iframe {
             width: 100%;
             height: 100%;
             border: none;
+            background: #ffffff;
             display: block;
         }
 
-        .code-view {
+        .code-container {
             width: 100%;
             height: 100%;
-            background: #0f172a;
-            color: #f8fafc;
-            padding: 24px;
-            overflow: auto;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-
-        .grid-view-container {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            padding: 20px;
-            display: none;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 20px;
-        }
-
-        .grid-card {
-            background: #0f172a;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 320px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s, border-color 0.2s;
-            cursor: pointer;
-        }
-
-        .grid-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-        }
-
-        .grid-card-header {
-            padding: 10px 14px;
             background: #1e293b;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .grid-card-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .grid-card-body {
-            flex: 1;
-            background: #ffffff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .grid-card-body iframe {
-            pointer-events: none;
-            transform-origin: 0 0;
-            width: 200%;
-            height: 200%;
-            transform: scale(0.5);
-        }
-
-        .grid-card-body .code-preview-snippet {
-            width: 100%;
-            height: 100%;
-            background: #090d16;
-            color: #94a3b8;
+            color: #f8fafc;
             padding: 16px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            overflow: hidden;
+            overflow: auto;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            display: none;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             aside {
                 display: none;
-            }
-            .top-selector-bar {
-                max-width: none;
             }
         }
     </style>
@@ -491,489 +299,215 @@
 
     <header>
         <div class="brand">
-            <div class="brand-logo">R</div>
-            <div class="brand-text">
-                <h1>Roshan • FEE Studio</h1>
-                <p>Interactive Frontend Engineering Lab Hub</p>
-            </div>
+            <div class="brand-badge">FEE</div>
+            <div class="brand-title">Roshan Lab Hub</div>
         </div>
 
-        <div class="top-selector-bar">
-            <select class="select-dropdown" id="quickSelect" onchange="onDropdownSelect(this.value)">
-                <option value="f1-flex01.html">f1-flex01.html (Flex Layout 01)</option>
-                <option value="f2-flex02.html">f2-flex02.html (Split View Interface)</option>
-                <option value="f3-flex03.html">f3-flex03.html (Roshan Card Component)</option>
-                <option value="f4-flex04.html">f4-flex04.html (Venn Geometry Circles)</option>
-                <option value="f5-grid1.html">f5-grid1.html (Responsive Grid System)</option>
-                <option value="f6-grid2.html">f6-grid2.html (Bento Grid Architecture)</option>
-                <option value="f7-login.html">f7-login.html (Roshan Portal Login)</option>
-                <option value="f8-staticPage.html">f8-staticPage.html (Responsive Showcase)</option>
-                <option value="f9-inventory.js">f9-inventory.js (Inventory Manager Code)</option>
-                <option value="f10-billing.js">f10-billing.js (Supermart Billing Code)</option>
-                <option value="f11-text1.txt">f11-text1.txt (Study Notes & Q&A)</option>
-                <option value="f12-navbar.html">f12-navbar.html (Dashboard & Sidebar)</option>
-                <option value="f13-grade-calc.html">f13-grade-calc.html (Grade & Attendance Interactive)</option>
-                <option value="f13-main.js">f13-main.js (Async Grade CLI Runner)</option>
-                <option value="grade.js">grade.js (ES Module Functions)</option>
+        <div class="nav-center">
+            <select class="select-box" id="fileDropdown" onchange="switchFile(this.value)">
+                <option value="f1-flex01.html">f1-flex01.html (Flex Layout 1)</option>
+                <option value="f2-flex02.html">f2-flex02.html (Split Layout)</option>
+                <option value="f3-flex03.html">f3-flex03.html (Card Component)</option>
+                <option value="f4-flex04.html">f4-flex04.html (Venn Circles)</option>
+                <option value="f5-grid1.html">f5-grid1.html (Grid System)</option>
+                <option value="f6-grid2.html">f6-grid2.html (Bento Grid)</option>
+                <option value="f7-login.html">f7-login.html (Login Portal)</option>
+                <option value="f8-staticPage.html">f8-staticPage.html (Responsive Page)</option>
+                <option value="f9-inventory.js">f9-inventory.js (Inventory Code)</option>
+                <option value="f10-billing.js">f10-billing.js (Billing Code)</option>
+                <option value="f11-text1.txt">f11-text1.txt (Study Notes)</option>
+                <option value="f12-navbar.html">f12-navbar.html (Dashboard Layout)</option>
+                <option value="f13-grade-calc.html">f13-grade-calc.html (Grade Calculator)</option>
+                <option value="f13-main.js">f13-main.js (Async Grade CLI)</option>
+                <option value="grade.js">grade.js (Grade Module)</option>
+                <option value="style.css">style.css (CSS Utility)</option>
             </select>
 
-            <div class="view-mode-toggle">
-                <button class="mode-btn active" id="singleModeBtn" onclick="switchViewMode('single')">Single View</button>
-                <button class="mode-btn" id="gridModeBtn" onclick="switchViewMode('grid')">All Previews</button>
+            <div class="view-tabs">
+                <button class="tab-btn active" id="tabPreview" onclick="setMode('preview')">Live Preview</button>
+                <button class="tab-btn" id="tabCode" onclick="setMode('code')">View Code</button>
             </div>
         </div>
 
-        <div class="header-actions">
-            <div class="device-selector" id="deviceControls">
-                <button class="device-btn active" onclick="setDevice('100%', this)">Desktop</button>
-                <button class="device-btn" onclick="setDevice('768px', this)">Tablet</button>
-                <button class="device-btn" onclick="setDevice('390px', this)">Mobile</button>
-            </div>
-
-            <a id="openTabBtn" href="f1-flex01.html" target="_blank" class="external-btn">
-                Open Tab &#8599;
+        <div class="header-btns">
+            <a href="https://github.com/roshandhiman/FEE-G4-0311" target="_blank" class="btn">
+                <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub Repo
             </a>
+            <a id="rawLink" href="f1-flex01.html" target="_blank" class="btn">Open New Tab &#8599;</a>
         </div>
     </header>
 
-    <div class="app-layout">
-        <aside id="sidebar">
-            <div class="sidebar-search">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search files (e.g. f1, grid)..." oninput="filterFiles()">
-            </div>
-
-            <div class="sidebar-header">
+    <div class="main-content">
+        <aside>
+            <div class="aside-header">
                 <span>Coursework Files</span>
-                <span class="badge-count" id="countBadge">12 Items</span>
+                <span>16 Files</span>
             </div>
-
-            <div class="file-list" id="fileList">
-                <button class="file-item active" data-name="f1-flex01.html" onclick="loadFile('f1-flex01.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128203;</span>
-                        <div>
-                            <div class="file-title">f1-flex01.html</div>
-                            <div class="file-sub">Roshan Flex Layout 01</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+            <div class="file-list">
+                <button class="file-btn active" data-file="f1-flex01.html" onclick="switchFile('f1-flex01.html')">
+                    <span>f1-flex01.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f2-flex02.html" onclick="loadFile('f2-flex02.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128203;</span>
-                        <div>
-                            <div class="file-title">f2-flex02.html</div>
-                            <div class="file-sub">Split View Interface</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f2-flex02.html" onclick="switchFile('f2-flex02.html')">
+                    <span>f2-flex02.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f3-flex03.html" onclick="loadFile('f3-flex03.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128203;</span>
-                        <div>
-                            <div class="file-title">f3-flex03.html</div>
-                            <div class="file-sub">Roshan Card Component</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f3-flex03.html" onclick="switchFile('f3-flex03.html')">
+                    <span>f3-flex03.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f4-flex04.html" onclick="loadFile('f4-flex04.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128203;</span>
-                        <div>
-                            <div class="file-title">f4-flex04.html</div>
-                            <div class="file-sub">Venn Geometry Circles</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f4-flex04.html" onclick="switchFile('f4-flex04.html')">
+                    <span>f4-flex04.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f5-grid1.html" onclick="loadFile('f5-grid1.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#9638;</span>
-                        <div>
-                            <div class="file-title">f5-grid1.html</div>
-                            <div class="file-sub">Responsive Grid System</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f5-grid1.html" onclick="switchFile('f5-grid1.html')">
+                    <span>f5-grid1.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f6-grid2.html" onclick="loadFile('f6-grid2.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#9638;</span>
-                        <div>
-                            <div class="file-title">f6-grid2.html</div>
-                            <div class="file-sub">Bento Grid Architecture</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f6-grid2.html" onclick="switchFile('f6-grid2.html')">
+                    <span>f6-grid2.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f7-login.html" onclick="loadFile('f7-login.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128272;</span>
-                        <div>
-                            <div class="file-title">f7-login.html</div>
-                            <div class="file-sub">Roshan Portal Login</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f7-login.html" onclick="switchFile('f7-login.html')">
+                    <span>f7-login.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f8-staticPage.html" onclick="loadFile('f8-staticPage.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128187;</span>
-                        <div>
-                            <div class="file-title">f8-staticPage.html</div>
-                            <div class="file-sub">Responsive Showcase</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f8-staticPage.html" onclick="switchFile('f8-staticPage.html')">
+                    <span>f8-staticPage.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f9-inventory.js" onclick="loadFile('f9-inventory.js', 'JS', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#9881;</span>
-                        <div>
-                            <div class="file-title">f9-inventory.js</div>
-                            <div class="file-sub">Inventory Manager Code</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-js">JS</span>
+                <button class="file-btn" data-file="f9-inventory.js" onclick="switchFile('f9-inventory.js')">
+                    <span>f9-inventory.js</span>
+                    <span class="tag">JS</span>
                 </button>
-
-                <button class="file-item" data-name="f10-billing.js" onclick="loadFile('f10-billing.js', 'JS', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#9881;</span>
-                        <div>
-                            <div class="file-title">f10-billing.js</div>
-                            <div class="file-sub">Supermart Billing Code</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-js">JS</span>
+                <button class="file-btn" data-file="f10-billing.js" onclick="switchFile('f10-billing.js')">
+                    <span>f10-billing.js</span>
+                    <span class="tag">JS</span>
                 </button>
-
-                <button class="file-item" data-name="f11-text1.txt" onclick="loadFile('f11-text1.txt', 'TXT', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128221;</span>
-                        <div>
-                            <div class="file-title">f11-text1.txt</div>
-                            <div class="file-sub">Study Notes & Q&A</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-txt">TXT</span>
+                <button class="file-btn" data-file="f11-text1.txt" onclick="switchFile('f11-text1.txt')">
+                    <span>f11-text1.txt</span>
+                    <span class="tag">TXT</span>
                 </button>
-
-                <button class="file-item" data-name="f12-navbar.html" onclick="loadFile('f12-navbar.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128441;</span>
-                        <div>
-                            <div class="file-title">f12-navbar.html</div>
-                            <div class="file-sub">Dashboard & Sidebar</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f12-navbar.html" onclick="switchFile('f12-navbar.html')">
+                    <span>f12-navbar.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f13-grade-calc.html" onclick="loadFile('f13-grade-calc.html', 'HTML', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#128202;</span>
-                        <div>
-                            <div class="file-title">f13-grade-calc.html</div>
-                            <div class="file-sub">Grade & Attendance GUI</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-html">HTML</span>
+                <button class="file-btn" data-file="f13-grade-calc.html" onclick="switchFile('f13-grade-calc.html')">
+                    <span>f13-grade-calc.html</span>
+                    <span class="tag">HTML</span>
                 </button>
-
-                <button class="file-item" data-name="f13-main.js" onclick="loadFile('f13-main.js', 'JS', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#9881;</span>
-                        <div>
-                            <div class="file-title">f13-main.js</div>
-                            <div class="file-sub">Async Grade CLI Runner</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-js">JS</span>
+                <button class="file-btn" data-file="f13-main.js" onclick="switchFile('f13-main.js')">
+                    <span>f13-main.js</span>
+                    <span class="tag">JS</span>
                 </button>
-
-                <button class="file-item" data-name="grade.js" onclick="loadFile('grade.js', 'JS', this)">
-                    <div class="file-info">
-                        <span class="file-icon">&#9881;</span>
-                        <div>
-                            <div class="file-title">grade.js</div>
-                            <div class="file-sub">Grade & Attendance Module</div>
-                        </div>
-                    </div>
-                    <span class="file-tag tag-js">JS</span>
+                <button class="file-btn" data-file="grade.js" onclick="switchFile('grade.js')">
+                    <span>grade.js</span>
+                    <span class="tag">JS</span>
+                </button>
+                <button class="file-btn" data-file="style.css" onclick="switchFile('style.css')">
+                    <span>style.css</span>
+                    <span class="tag">CSS</span>
                 </button>
             </div>
         </aside>
 
-        <main class="preview-container">
-            <div class="preview-bar" id="previewBar">
-                <div class="preview-dots">
-                    <span class="dot dot-red"></span>
-                    <span class="dot dot-yellow"></span>
-                    <span class="dot dot-green"></span>
-                </div>
-                <div class="preview-url" id="previewUrl">https://fee-g4-0311.vercel.app/f1-flex01.html</div>
-                <div class="preview-actions">Live Preview</div>
+        <main class="content-viewer">
+            <div class="action-bar">
+                <div class="current-file-name" id="currentFileName">f1-flex01.html</div>
+                <button class="btn btn-primary" id="copyBtn" onclick="copyCode()">Copy Code</button>
             </div>
-
-            <div class="frame-wrapper" id="frameWrapper">
-                <iframe id="previewFrame" src="f1-flex01.html"></iframe>
-                <div id="codeViewer" class="code-view" style="display: none;"></div>
-            </div>
-
-            <div class="grid-view-container" id="gridView">
-                <div class="grid-card" onclick="selectFromGrid('f1-flex01.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f1-flex01.html (Flexbox)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f1-flex01.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f2-flex02.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f2-flex02.html (Split View)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f2-flex02.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f3-flex03.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f3-flex03.html (Card)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f3-flex03.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f4-flex04.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f4-flex04.html (Venn Circles)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f4-flex04.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f5-grid1.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f5-grid1.html (Grid System)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f5-grid1.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f6-grid2.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f6-grid2.html (Bento Grid)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f6-grid2.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f7-login.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f7-login.html (Portal Login)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f7-login.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f8-staticPage.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f8-staticPage.html (Showcase)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f8-staticPage.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f12-navbar.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f12-navbar.html (Dashboard)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f12-navbar.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f9-inventory.js', 'JS')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f9-inventory.js (JS Logic)</span>
-                        <span class="file-tag tag-js">JS</span>
-                    </div>
-                    <div class="grid-card-body">
-                        <div class="code-preview-snippet">// Roshan Inventory Manager
-let stock = [];
-function addStock() { ... }</div>
-                    </div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f10-billing.js', 'JS')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f10-billing.js (Billing)</span>
-                        <span class="file-tag tag-js">JS</span>
-                    </div>
-                    <div class="grid-card-body">
-                        <div class="code-preview-snippet">// Roshan Supermart Billing
-const store = "ROSHAN MART";
-let items = [...];</div>
-                    </div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f11-text1.txt', 'TXT')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f11-text1.txt (Study Notes)</span>
-                        <span class="file-tag tag-txt">TXT</span>
-                    </div>
-                    <div class="grid-card-body">
-                        <div class="code-preview-snippet">Roshan Study Notes
-Q1: Functions & Scope
-Q2: CSS Layouts & Flexbox</div>
-                    </div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f13-grade-calc.html', 'HTML')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f13-grade-calc.html (Calculator)</span>
-                        <span class="file-tag tag-html">HTML</span>
-                    </div>
-                    <div class="grid-card-body"><iframe src="f13-grade-calc.html"></iframe></div>
-                </div>
-
-                <div class="grid-card" onclick="selectFromGrid('f13-main.js', 'JS')">
-                    <div class="grid-card-header">
-                        <span class="grid-card-title">f13-main.js (Async Grade CLI)</span>
-                        <span class="file-tag tag-js">JS</span>
-                    </div>
-                    <div class="grid-card-body">
-                        <div class="code-preview-snippet">// f13-main.js
-import { grade, attendance } from "./grade.js";
-const totalDays = await askNumber(...);</div>
-                    </div>
-                </div>
+            <div class="viewer-box">
+                <iframe id="liveFrame" src="f1-flex01.html"></iframe>
+                <pre id="codeView" class="code-container"></pre>
             </div>
         </main>
     </div>
 
     <script>
         let currentFile = 'f1-flex01.html';
-        let currentType = 'HTML';
+        let currentMode = 'preview';
+        let fileCache = {};
 
-        function loadFile(file, type, element) {
-            currentFile = file;
-            currentType = type;
+        function switchFile(fileName) {
+            currentFile = fileName;
+            document.getElementById('currentFileName').innerText = fileName;
+            document.getElementById('fileDropdown').value = fileName;
+            document.getElementById('rawLink').href = fileName;
 
-            document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
-            if (element) {
-                element.classList.add('active');
-            } else {
-                const target = document.querySelector(`.file-item[data-name="${file}"]`);
-                if (target) target.classList.add('active');
-            }
+            document.querySelectorAll('.file-btn').forEach(btn => {
+                if (btn.getAttribute('data-file') === fileName) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
 
-            document.getElementById('quickSelect').value = file;
+            loadContent();
+        }
 
-            const frame = document.getElementById('previewFrame');
-            const codeViewer = document.getElementById('codeViewer');
-            const previewUrl = document.getElementById('previewUrl');
-            const openTabBtn = document.getElementById('openTabBtn');
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('tabPreview').classList.toggle('active', mode === 'preview');
+            document.getElementById('tabCode').classList.toggle('active', mode === 'code');
+            loadContent();
+        }
 
-            previewUrl.innerText = `https://fee-g4-0311.vercel.app/${file}`;
-            openTabBtn.href = file;
+        function loadContent() {
+            const frame = document.getElementById('liveFrame');
+            const codeBox = document.getElementById('codeView');
+            const isHtml = currentFile.endsWith('.html');
 
-            if (type === 'HTML') {
-                codeViewer.style.display = 'none';
+            if (currentMode === 'preview' && isHtml) {
                 frame.style.display = 'block';
-                frame.src = file;
+                codeBox.style.display = 'none';
+                frame.src = currentFile;
             } else {
                 frame.style.display = 'none';
-                codeViewer.style.display = 'block';
-                codeViewer.innerText = 'Loading source file...';
+                codeBox.style.display = 'block';
 
-                fetch(file)
+                if (fileCache[currentFile]) {
+                    codeBox.innerText = fileCache[currentFile];
+                } else {
+                    codeBox.innerText = 'Loading code...';
+                    fetch(currentFile)
+                        .then(res => res.text())
+                        .then(text => {
+                            fileCache[currentFile] = text;
+                            codeBox.innerText = text;
+                        })
+                        .catch(err => {
+                            codeBox.innerText = 'Error loading source: ' + err.message;
+                        });
+                }
+            }
+        }
+
+        function copyCode() {
+            const copyBtn = document.getElementById('copyBtn');
+
+            function doCopy(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    copyBtn.innerText = 'Copied!';
+                    setTimeout(() => {
+                        copyBtn.innerText = 'Copy Code';
+                    }, 2000);
+                });
+            }
+
+            if (fileCache[currentFile]) {
+                doCopy(fileCache[currentFile]);
+            } else {
+                fetch(currentFile)
                     .then(res => res.text())
                     .then(text => {
-                        codeViewer.innerText = text;
-                    })
-                    .catch(err => {
-                        codeViewer.innerText = `Error loading file: ${err.message}`;
+                        fileCache[currentFile] = text;
+                        doCopy(text);
                     });
             }
         }
 
-        function onDropdownSelect(fileName) {
-            let type = 'HTML';
-            if (fileName.endsWith('.js')) type = 'JS';
-            if (fileName.endsWith('.txt')) type = 'TXT';
-            loadFile(fileName, type, null);
-        }
-
-        function switchViewMode(mode) {
-            const singleBtn = document.getElementById('singleModeBtn');
-            const gridBtn = document.getElementById('gridModeBtn');
-            const frameWrapper = document.getElementById('frameWrapper');
-            const previewBar = document.getElementById('previewBar');
-            const gridView = document.getElementById('gridView');
-            const deviceControls = document.getElementById('deviceControls');
-
-            if (mode === 'grid') {
-                singleBtn.classList.remove('active');
-                gridBtn.classList.add('active');
-                frameWrapper.style.display = 'none';
-                previewBar.style.display = 'none';
-                deviceControls.style.display = 'none';
-                gridView.style.display = 'grid';
-            } else {
-                gridBtn.classList.remove('active');
-                singleBtn.classList.add('active');
-                gridView.style.display = 'none';
-                previewBar.style.display = 'flex';
-                frameWrapper.style.display = 'block';
-                deviceControls.style.display = 'flex';
-            }
-        }
-
-        function selectFromGrid(file, type) {
-            switchViewMode('single');
-            loadFile(file, type, null);
-        }
-
-        function setDevice(width, btn) {
-            document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const wrapper = document.getElementById('frameWrapper');
-            const previewBar = document.getElementById('previewBar');
-
-            wrapper.style.maxWidth = width;
-            previewBar.style.maxWidth = width;
-        }
-
-        function filterFiles() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const items = document.querySelectorAll('.file-item');
-            let visibleCount = 0;
-
-            items.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    item.style.display = 'flex';
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            document.getElementById('countBadge').innerText = `${visibleCount} Items`;
-        }
+        loadContent();
     </script>
 </body>
 </html>
