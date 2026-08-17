@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="Author" content="Roshan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshan - Bento Grid Architecture</title>
+    <title>Roshan - Bento Grid</title>
     <style>
         *{
             margin: 0;
@@ -14,126 +14,130 @@
         
         body{
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            font-size: 16px;
-            background-color: #090d16;
-            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #09090b;
+            color: #fafafa;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .header-box{
-            background: linear-gradient(135deg, #111827, #1f2937);
-            padding: 1.2rem 2rem;
+            background: #18181b;
+            border-bottom: 1px solid #27272a;
+            padding: 18px 32px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            font-size: 1.3rem;
-            font-weight: 600;
-            border-bottom: 1px solid #374151;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
         .bento-container{
             display: grid;
-            gap: 1rem;
+            gap: 14px;
             grid-template-columns: repeat(3, 110px);
             grid-template-rows: repeat(3, 110px);
             place-content: center;
-            padding: 2rem;
+            padding: 24px;
             flex: 1;
         }
 
         .bento-item{
-            background: #1f2937;
-            border: 1px solid #374151;
-            border-radius: 14px;
-            padding: 1.5rem;
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 10px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.25s ease;
+            font-size: 0.95rem;
+            color: #e4e4e7;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .bento-item:hover{
-            border-color: #6366f1;
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+            border-color: #f97316;
+            color: #ffffff;
         }
 
         #m1{
             grid-column: 1 / 3;
             grid-row: 1 / 2;
-            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            background: #1c1917;
+            border-color: #44403c;
+            color: #fdba74;
         }
 
         #m2{
             grid-column: 3 / 4;
             grid-row: 1 / 3;
-            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            background: #18181b;
         }
 
         #m3{
             grid-column: 1 / 2;
             grid-row: 2 / 4;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            background: #18181b;
         }
 
         #m4{
             grid-column: 2 / 3;
             grid-row: 2 / 3;
-            background: #1e293b;
+            background: #18181b;
         }
 
         #m5{
             grid-column: 2 / 4;
             grid-row: 3 / 4;
-            background: linear-gradient(135deg, #ec4899, #db2777);
+            background: #1c1917;
+            border-color: #44403c;
+            color: #f97316;
         }
 
         @media (min-width: 640px){
             .bento-container{
-                grid-template-columns: repeat(3, 160px);
-                grid-template-rows: repeat(3, 130px);
+                grid-template-columns: repeat(3, 150px);
+                grid-template-rows: repeat(3, 120px);
             }
         }
 
         @media (min-width: 1024px){
             .bento-container{
-                grid-template-columns: repeat(3, 240px);
-                grid-template-rows: repeat(3, 160px);
+                grid-template-columns: repeat(3, 220px);
+                grid-template-rows: repeat(3, 140px);
             }
         }
 
         .footer-box{
-            background: #111827;
-            padding: 1.2rem 2rem;
+            background: #18181b;
+            border-top: 1px solid #27272a;
+            padding: 14px 32px;
             text-align: center;
-            font-size: 0.95rem;
-            color: #9ca3af;
-            border-top: 1px solid #374151;
+            font-size: 13px;
+            color: #71717a;
         }
     </style>
 </head>
 <body>
     <header class="header-box">
-        <span style="font-size: 1.8rem; margin-right: 0.75rem;">&#9812;</span>
-        Roshan Bento Architecture
+        <div>ROSHAN • BENTO GRID</div>
+        <span style="color: #f97316; font-size: 12px; font-weight: 700;">MATTE DARK</span>
     </header>
 
     <main class="bento-container">
-        <div class="bento-item" id="m1">Roshan Analytics</div>
-        <div class="bento-item" id="m2">Roshan Showcase</div>
-        <div class="bento-item" id="m3">Roshan Profile</div>
-        <div class="bento-item" id="m4">Roshan Hub</div>
-        <div class="bento-item" id="m5">Roshan Project Stream</div>
+        <div class="bento-item" id="m1">Bento Header 01</div>
+        <div class="bento-item" id="m2">Bento Vertical 02</div>
+        <div class="bento-item" id="m3">Bento Column 03</div>
+        <div class="bento-item" id="m4">Bento Center 04</div>
+        <div class="bento-item" id="m5">Bento Span 05</div>
     </main>
 
     <footer class="footer-box">
-        Roshan &copy; 2026 Bento UI System
+        Roshan Lab Assignment 06 • Bento Grid Layout
     </footer>
 </body>
 </html>

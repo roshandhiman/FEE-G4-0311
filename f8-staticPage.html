@@ -13,9 +13,9 @@
 
         body{
             min-height: 100vh;
-            background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 50%, #0f172a 100%);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            color: #ffffff;
+            background: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #0f172a;
         }
 
         .p{
@@ -29,27 +29,29 @@
         .box{
             width: 100%;
             height: 7.5rem;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 700;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            color: #0f172a;
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .card{
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            color: #f8fafc;
-            transition: transform 0.25s ease, border-color 0.25s ease;
+        .box:hover{
+            border-color: #f97316;
+            transform: translateY(-2px);
         }
 
-        .card:hover{
-            transform: translateY(-4px);
-            border-color: rgba(99, 102, 241, 0.6);
+        .hero-box{
+            background: #fff7ed;
+            border-color: #f97316;
+            color: #ea580c;
+            font-size: 1.2rem;
         }
 
         .fc1{
@@ -88,12 +90,12 @@
 <body>
     <section class="p fc1">
         <section class="fc2" id="s1">
-            <div class="p box card">Roshan Hero Highlight</div>
+            <div class="p box hero-box">Roshan Hero Highlight • Showcase</div>
         </section>
         <section class="fc2" id="s2">
-            <div class="p box card">Roshan Portfolio</div>
-            <div class="p box card">Roshan Analytics</div>
-            <div class="p box card">Roshan Cloud</div>
+            <div class="p box">Analytics Module</div>
+            <div class="p box">Components Hub</div>
+            <div class="p box">System Metrics</div>
         </section>
     </section>
 </body>

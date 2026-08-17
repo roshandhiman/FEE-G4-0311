@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="Author" content="Roshan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshan - Responsive Grid System</title>
+    <title>Roshan - Minimalist Grid</title>
     <style>
         *{
             margin: 0;
@@ -14,50 +14,54 @@
         
         body{
             min-height: 100vh;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            font-size: 16px;
-            background-color: #0f172a;
-            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .header-box{
-            background: linear-gradient(135deg, #1e293b, #334155);
-            padding: 1rem 2rem;
+            background: #ffffff;
+            border-bottom: 2px solid #f97316;
+            padding: 18px 32px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
         .grid-container{
             display: grid;
-            gap: 1rem;
+            gap: 16px;
             grid-template-columns: repeat(3, 140px);
             grid-template-rows: repeat(3, 140px);
             place-content: center;
-            padding: 2rem;
+            padding: 32px;
             flex: 1;
         }
 
         .grid-item{
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            border-radius: 12px;
-            padding: 1rem;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: 500;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 700;
+            font-size: 15px;
+            color: #0f172a;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .grid-item:hover{
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            border-color: #f97316;
+            background: #fff7ed;
+            color: #ea580c;
         }
 
         @media (min-width: 767px){
@@ -69,42 +73,46 @@
 
         @media (min-width: 1024px){
             .grid-container{
-                grid-template-columns: repeat(4, 220px);
-                grid-template-rows: repeat(2, 170px);
+                grid-template-columns: repeat(4, 210px);
+                grid-template-rows: repeat(2, 160px);
             }
 
             #m6{
                 grid-column: 2 / -1;
+                background: #fff7ed;
+                border-color: #f97316;
+                color: #ea580c;
             }
         }
 
         .footer-box{
-            background: #1e293b;
-            padding: 1rem 2rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 16px 32px;
             text-align: center;
-            font-size: 0.95rem;
-            color: #94a3b8;
-            border-top: 1px solid #334155;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <header class="header-box">
-        <span style="font-size: 1.8rem; margin-right: 0.75rem;">&#9812;</span>
-        Roshan Grid Workspace
+        <div>ROSHAN • MINIMAL GRID</div>
+        <span style="color: #f97316; font-size: 13px; font-weight: 700;">RESPONSIVE TILES</span>
     </header>
 
     <main class="grid-container">
-        <div class="grid-item" id="m1">Roshan 01</div>
-        <div class="grid-item" id="m2">Roshan 02</div>
-        <div class="grid-item" id="m3">Roshan 03</div>
-        <div class="grid-item" id="m4">Roshan 04</div>
-        <div class="grid-item" id="m5">Roshan 05</div>
-        <div class="grid-item" id="m6">Roshan 06 (Wide Span)</div>
+        <div class="grid-item" id="m1">Tile 01</div>
+        <div class="grid-item" id="m2">Tile 02</div>
+        <div class="grid-item" id="m3">Tile 03</div>
+        <div class="grid-item" id="m4">Tile 04</div>
+        <div class="grid-item" id="m5">Tile 05</div>
+        <div class="grid-item" id="m6">Tile 06 (Wide Span)</div>
     </main>
 
     <footer class="footer-box">
-        Roshan &copy; 2026 Grid Layout Architecture
+        Roshan Lab Assignment 05 • Minimalist System
     </footer>
 </body>
 </html>

@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshan - Venn Circles</title>
-
+    <title>Roshan - Venn Geometry</title>
     <style>
         *{
             margin: 0;
@@ -14,29 +13,30 @@
 
         body {
             min-height: 100vh;
-            background: #0f172a;
+            background: #09090b;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             flex-direction: column;
             gap: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         .title {
-            color: #f8fafc;
-            font-size: 1.5rem;
-            font-weight: 600;
+            color: #f97316;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .box {
-            background: #1e293b;
+            background: #18181b;
+            border: 1px solid #27272a;
             width: 90%;
-            max-width: 650px;
-            height: 380px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 600px;
+            height: 360px;
+            border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,45 +44,41 @@
 
         .circles {
             position: relative;
-            width: 320px;
-            height: 160px;
+            width: 300px;
+            height: 150px;
         }
 
         .circle {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             position: absolute;
             mix-blend-mode: screen;
-            transition: transform 0.3s ease;
+            transition: transform 0.25s ease;
         }
 
         .circle1 {
             left: 0;
-            background: rgba(59, 130, 246, 0.7);
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+            background: rgba(249, 115, 22, 0.75);
         }
 
         .circle2 {
-            left: 160px;
-            background: rgba(236, 72, 153, 0.7);
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+            left: 150px;
+            background: rgba(59, 130, 246, 0.75);
         }
 
         .circle3 {
-            left: 80px;
-            background: rgba(168, 85, 247, 0.7);
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+            left: 75px;
+            background: rgba(236, 72, 153, 0.75);
         }
 
         .box:hover .circle {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
     </style>
 </head>
-
 <body>
-    <div class="title">Roshan - Venn Geometry Design</div>
+    <div class="title">Roshan • Venn Intersection System</div>
     <div class="box">
         <div class="circles">
             <div class="circle circle1"></div>
