@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Local Storage</title>
+        <style>
+            body {
+                margin: 0;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Arial, sans-serif;
+                background:thistle
+            }
+
+            h2 {
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 15px;
+                font-size: 45px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                text-decoration: underline;
+            }
+            #studentlist {
+                list-style: decimal-leading-zero;
+                padding: 0;
+                margin: 0;
+            }
+            #studentlist li {
+                background:palevioletred;
+                border: 2px solid black;
+                border-bottom: 4px solid black;
+                border-right: 4px solid black;
+                border-radius: 2px;
+                padding: 10px 12px;
+                margin-bottom: 10px;
+            }
+            #studentlist li:hover{
+                border-bottom: 6px solid black;
+                border-right: 6px solid black;
+                
+            }
+            .container{
+                background-color: antiquewhite;
+                margin: 0;
+                padding: 90 80;
+                border:2px solid black;
+                border-bottom: 6px solid black;
+                border-right: 6px solid black;
+            }
+            .container:hover{
+                border-bottom: 8px solid black;
+                border-right: 8px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <div class="student-box">
+            <h2>Student Name</h2>
+            <ul id="studentlist"></ul>
+        </div>
+    </div>
+        <script>
+            const student=[
+                {
+                    id: 1,
+                    name: "Roshan",
+                    course: "JavaScript",
+                    marks: 100,
+                },
+                {
+                    id: 2,
+                    name: "Roshanpreet",
+                    course: "C++",
+                    marks: 99,
+                }
+            ];
+            localStorage.setItem("students",JSON.stringify(student));
+            const data=localStorage.getItem("students");
+            const studentData=JSON.parse(data);
+            const studetnList=document.getElementById("studentlist");
+            studentData.forEach((student)=>{
+                const li=document.createElement("li");
+                li.textContent=`ID: ${student.id}, Name: ${student.name}, Course: ${student.course}, Marks: ${student.marks}`;
+                studetnList.appendChild(li);
+            });
+        </script>
+    </body>
+</html>
