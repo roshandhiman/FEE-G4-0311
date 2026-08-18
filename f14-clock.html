@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>Clock</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+				font-family: Bebas Neue;
+				background: #fff7ed;
+			}
+			.container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 3rem;
+				font-weight: bold;
+				color: #1f2937;
+				letter-spacing: 2px;
+				background: #ffffff;
+				padding: 24px 36px;
+				border: 4px solid #000000;
+   				box-shadow: 6px 6px 0px #000000;
+				border-radius: 0;
+				
+				
+			}
+			.container:hover{
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px black;
+}
+		</style>
+	</head>
+	<body>
+		<div class="container" id="clock"></div>
+		<script>
+			function updateClock() {
+				const now = new Date();
+				const time = now.toLocaleTimeString([], {
+					h: '2-digit',
+					m: '2-digit',
+					s: '2-digit',
+				});
+				document.getElementById('clock').textContent = time;
+			}
+			updateClock();
+			setInterval(updateClock, 1000);
+		</script>
+	</body>
+</html>
+	
