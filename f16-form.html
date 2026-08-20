@@ -88,22 +88,62 @@
                 transform: translate(4px, 4px);
                 box-shadow: 0 0 0 black;
             }
+            #message {
+                margin-top: 18px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .error { color: #b91c1c; }
+            .success { color: #166534; }
         </style>
     </head>
     <body>
         <nav class="navbar">Header</nav>
         <div class="container">
-            <div class="form">
+            <form class="form">
                 <h1>Form</h1>
                 <h3>Section</h3>
-                <input id="input" placeholder="Enter Your Class">
+                <input id="section" placeholder="Enter Your Class">
                 <h3 id="roll">Roll No.</h3>
-                <input id="input" placeholder="Enter your Rollno.">
+                <input id="rollNo" placeholder="Enter your Rollno." inputmode="numeric">
                 <h3 id="name">Name</h3>
-                <input id="input" placeholder="Enter your name">
-                <button>SUBMIT</button>
-            </div>
+                <input id="studentName" placeholder="Enter your name">
+                <button type="submit">SUBMIT</button>
+                <p id="message" role="alert"></p>
+            </form>
         </div>
         <footer class="footer">Footer</footer>
+        <script>
+            document.querySelector('.form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const section = document.getElementById('section').value.trim();
+                const rollNo = document.getElementById('rollNo').value.trim();
+                const studentName = document.getElementById('studentName').value.trim();
+                const message = document.getElementById('message');
+
+                if (!section) {
+                    message.textContent = 'Section not written. Please enter your section.';
+                    message.className = 'error';
+                    return;
+                }
+                if (!rollNo) {
+                    message.textContent = 'Roll number not written. Please enter your roll number.';
+                    message.className = 'error';
+                    return;
+                }
+                if (!/^\d+$/.test(rollNo)) {
+                    message.textContent = 'Roll number must contain digits only.';
+                    message.className = 'error';
+                    return;
+                }
+                if (!studentName) {
+                    message.textContent = 'Name not written. Please enter your name.';
+                    message.className = 'error';
+                    return;
+                }
+                message.textContent = 'Details submitted successfully.';
+                message.className = 'success';
+            });
+        </script>
     </body>
 </html>
