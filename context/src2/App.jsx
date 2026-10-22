@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useNavigate, Link } from "react
 import { AuthProvider, useAuth } from "./AuthContext";
 import NavBar from "./NavBar";
 import BackgroundVideo from "./components/BackgroundVideo";
+import SplashCursor from "./components/SplashCursor";
 
 function Home() {
   return (
@@ -148,6 +149,14 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <SplashCursor
+          rainbow
+          size={1}
+          force={1}
+          swirl={3}
+          trail={1}
+          clickSplash
+        />
         <BackgroundVideo />
         <NavBar />
         <Routes>
