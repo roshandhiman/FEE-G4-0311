@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 2px solid white;
+    position: relative;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.auth-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.auth-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.page-content {
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kinetic-grid {
+    position: relative;    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.kinetic-grid--mono {
+    background-color: #000000;
+}
+
+.kinetic-grid--default {
+    background-color: #161618;
+}
+.kinetic-grid-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.kinetic-grid-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+.navbar {
+    z-index: 20;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+.nav-link:hover {
+    background-color: #222;
+    border-radius: 6px;
+}

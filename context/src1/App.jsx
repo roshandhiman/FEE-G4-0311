@@ -4,12 +4,18 @@ import './App.css'
 export default function App() {
   const [currentPage, setCurrentPage] = useState('Page 1')
   const [authMode, setAuthMode] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const pages = ['Page 1', 'Page 2', 'Page 3', 'Page 4']
 
-  const handlePageClick = (page) => {
-    setCurrentPage(page)
+  const handleLogin = () => {
+    setIsLoggedIn(true)
     setAuthMode(null)
+  }
+
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+    setCurrentPage('Page 1')
   }
 
   return (
@@ -21,25 +27,51 @@ export default function App() {
           </svg>
         </div>
 
+        {/* Center pages - only visible after login */}
         <div className="nav-center">
-          {pages.map((page) => (
-            <button
-              key={page}
-              className={`nav-link ${currentPage === page && !authMode ? 'active' : ''}`}
-              onClick={() => handlePageClick(page)}
-            >
-              {page}
-            </button>
-          ))}
+          {isLoggedIn &&
+            pages.map((page) => (
+              <button
+                key={page}
+                className={`nav-link ${currentPage === page && !authMode ? 'active' : ''}`}
+                onClick={() => {
+                  setCurrentPage(page)
+                  setAuthMode(null)
+                }}
+              >
+                {page}
+              </button>
+            ))}
         </div>
 
+        {/* Right corner - Sign in/Sign up buttons before login, Logout icon after login */}
         <div className="nav-right">
-          <button className="btn-signin" onClick={() => setAuthMode('signin')}>
-            Sign In
-          </button>
-          <button className="btn-signup" onClick={() => setAuthMode('signup')}>
-            Sign Up
-          </button>
+          {!isLoggedIn ? (
+            <>
+              <button className="btn-signin" onClick={() => setAuthMode('signin')}>
+                Sign In
+              </button>
+              <button className="btn-signup" onClick={() => setAuthMode('signup')}>
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <button className="btn-logout" onClick={handleLogout} title="Logout">
+              <svg
+                className="logout-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" y1="12" x2="9" y2="12" />
+              </svg>
+            </button>
+          )}
         </div>
       </nav>
 
@@ -47,35 +79,15 @@ export default function App() {
         {authMode ? (
           <div className="auth-card">
             <div className="card-header">
-              <h2>{authMode === 'signin' ? 'Sign In' : 'Sign Up'}</h2>
+              <h2>Enter your details</h2>
               <button className="close-btn" onClick={() => setAuthMode(null)}>
                 ✕
               </button>
             </div>
 
-            <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
-              {authMode === 'signup' && (
-                <div className="form-group">
-                  <label>Name</label>
-                  <input type="text" placeholder="Enter your name" />
-                </div>
-              )}
-
-              <div className="form-group">
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" />
-              </div>
-
-              <div className="form-group">
-                <label>Password</label>
-                <input type="password" placeholder="Enter your password" />
-              </div>
-
-              <button type="submit" className="btn-submit">
-                {authMode === 'signin' ? 'Sign In' : 'Create Account'}
-              </button>
-            </form>
-
+            <button className="btn-submit" onClick={handleLogin}>
+              {authMode === 'signin' ? 'Login' : 'Sign Up'}
+            </button>
           </div>
         ) : (
           <div className="page-display">
