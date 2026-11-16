@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: Poppins, sans-serif;
+  background: hsl(215, 50%, 5%);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* layout */
+.fy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.h100 {
+  min-height: 100dvh;
+}
+
+/* spacing */
+.p2 {
+  padding: 1rem;
+}
+.p3 {
+  padding: 1.5rem;
+}
+
+/* radius + shadow */
+.br2 {
+  border-radius: 0.5rem;
+}
+.sh2 {
+  box-shadow: 0 5px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* font sizes */
+.fss {
+  font-size: 0.9rem;
+}
+.fsm {
+  font-size: 1.15rem;
+}
+
+/* colors */
+.clr1 {
+  color: yellow;
+}
+.clr2 {
+  color: skyblue;
+}
+
+/* backgrounds */
+.bgl {
+  background: linear-gradient(hsl(215, 50%, 5%), hsl(215, 50%, 20%));
+  color: #f1f1f1;
+}
+.bg22 {
+  background-color: hsl(0, 0%, 10%);
+  color: skyblue;
+}
+
+/* input */
+input {
+  font-family: inherit;
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 32px;
+  padding: 3px 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+/* hover effect */
+.movie-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.movie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(135, 206, 235, 0.25);
+}
