@@ -5,13 +5,11 @@ const style = {
   gridTemplateColumns: "repeat(auto-fill,minmax(255px,1fr))",
   gap: "1rem",
 };
-
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
   useEffect(() => {
     fetch("https://api.tvmaze.com/shows?page=0")
       .then((res) => {
@@ -24,26 +22,21 @@ export default function App() {
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
-
   const filteredMovies = movies.filter((movie) =>
     movie.title?.toLowerCase().includes(title.trim().toLowerCase())
   );
-
   return (
     <div className="bgl h100 p3 fy">
       <h1 className="clr2">Movies</h1>
-
       <input
         type="text"
         placeholder="Search movies..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-
       {loading && <p>Loading...</p>}
       {error && <p className="clr1">{error}</p>}
       {!loading && !error && filteredMovies.length === 0 && <p>No movies found.</p>}
-
       <div style={style}>
         {filteredMovies.map((movie) => (
           <div
