@@ -1,0 +1,47 @@
+1. Components & JSX
+
+Summary: Build reusable user interface components.
+
+Keywords (25–50 words):
+React Components, JSX, Functional Components, Class Components, HTML Elements, JavaScript Expressions, Props, Component Rendering, Virtual DOM, React Fragment, Import, Export, Component Structure, Reusable UI, Parent Components, Child Components, Conditional Rendering, Lists, Keys, React Elements, Component Composition, JSX Syntax, ReactDOM, Rendering.
+
+2. Props & State
+
+Summary: Manage and share component data.
+
+Keywords (25–50 words):
+Props, State, useState, State Management, setState, Data Flow, Parent Component, Child Component, Props Drilling, State Updates, Re-rendering, Immutable State, Event Handling, Controlled Components, Uncontrolled Components, Lifting State Up, useContext, Context API, Dynamic Data, Component Communication, State Initialization, State Variables, Reactivity.
+
+3. Hooks & Event Handling
+
+Summary: Create interactive and dynamic applications.
+
+Keywords (25–50 words):
+React Hooks, useState, useEffect, useRef, useMemo, useCallback, useReducer, useContext, Custom Hooks, Event Handling, onClick, onChange, onSubmit, onKeyDown, Event Object, Synthetic Events, Side Effects, Dependency Array, Cleanup Function, Form Handling, Button Events, Input Events, Component Lifecycle, Performance Optimization.
+
+4. React Router & Navigation
+
+Summary: Navigate between pages without reloading.
+
+Keywords (25–50 words):
+React Router, BrowserRouter, Routes, Route, Link, NavLink, useNavigate, useParams, useLocation, Nested Routes, Dynamic Routing, Route Parameters, URL Parameters, Navigation, Client-Side Routing, Single Page Application, Protected Routes, Redirects, Layout Routes, Outlet, Route Configuration, Navigation State, Search Parameters, useSearchParams, Page Transitions.
+
+5. Forms & API Integration
+
+Summary: Handle forms and fetch data.
+
+Keywords (25–50 words):
+React Forms, Controlled Components, Uncontrolled Components, Form Validation, onSubmit, onChange, Input Fields, Textarea, Select, Checkbox, useState, Form Handling, API Integration, Fetch API, Axios, HTTP Requests, GET, POST, PUT, DELETE, Async, Await, Promises, JSON, REST API, Error Handling, Loading State, Data Fetching, Response Handling, Form Submission, Input Validation.
+6. Zustand & State Management
+
+Summary: Manage global application state efficiently.
+
+Keywords (25–50 words):
+Zustand, State Management, Global State, create, Store, Actions, Selectors, set, get, useStore, State Updates, Shared State, React Hooks, Middleware, Persist, DevTools, Async Actions, State Subscription, Immutable Updates, Store Initialization, State Synchronization, Lightweight Library, Component Re-rendering, State Persistence, Custom Stores, Props Drilling, Store Management.
+
+7. Redux & Redux Toolkit
+
+Summary: Manage complex application state predictably.
+
+Keywords (25–50 words):
+Redux, Redux Toolkit, State Management, Global State, configureStore, createSlice, createAsyncThunk, Provider, useSelector, useDispatch, Actions, Reducers, Store, Dispatch, Payload, Middleware, Immer, Async Thunks, Redux DevTools, RTK Query, createApi, Data Fetching, State Updates, Immutable State, Redux Persist, Action Creators, State Synchronization, Store Configuration, Redux Hooks.
